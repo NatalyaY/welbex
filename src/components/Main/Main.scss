@@ -1,0 +1,353 @@
+@use '../../shared' as *;
+@use 'sass:math';
+
+.main {
+    padding-top: 100px;
+    padding-bottom: 69px;
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    @include setBigTabletStyles {
+        gap: 45px;
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 55px;
+    }
+
+    @include setMobileStyles {
+        padding-top: 40px;
+        text-align: left;
+    }
+
+    * {
+        white-space: pre;
+    }
+
+    &__left {
+        flex: 1;
+        width: 100%;
+        z-index: 1;
+
+        .gradient {
+            @include textGradient($gradient-pink);
+        }
+
+        h1 {
+            white-space: pre-line;
+            font-weight: normal;
+            font-size: $fz-h1;
+            margin-bottom: 30px;
+
+            @include setMobileStyles {
+                font-size: $fz-h1-mobile;
+            }
+        }
+
+        h2 {
+            font: normal $fz-h2 $fontMont;
+        }
+    }
+
+    &__right {
+        flex: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: end;
+        gap: 40px;
+        z-index: 1;
+
+        @include setBigTabletStyles {
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        @include setMobileStyles {
+            gap: 20px;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .gradient,
+        .gradient2 {
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: $fz-h2;
+            font-weight: 500;
+        }
+
+        .main__benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+
+            @include setMobileStyles {
+                gap: 14px;
+            }
+
+            &__line {
+                display: flex;
+                gap: 30px;
+                width: 100%;
+
+                @include setMobileStyles {
+                    gap: 10px;
+                }
+
+                .benefit {
+                    flex: 1 1 0;
+                    min-width: 0;
+
+                    &__heading {
+                        white-space: normal;
+                        margin-bottom: 6px;
+                        font-weight: 500;
+                        font-size: $fz-h2;
+                        text-transform: uppercase;
+
+                        @include setMobileStyles {
+                            font-family: $fontMont;
+                            font-size: 13px;
+                            font-weight: 400;
+                            position: relative;
+
+                            &:before {
+                                content: "";
+                                display: inline-block;
+                                transform: translateY(-2px);
+                                vertical-align: middle;
+                                width: 10px;
+                                height: 2px;
+                                margin-right: 5px;
+                                background: $gradient-red;
+                            }
+                        }
+                    }
+
+                    &__content {
+                        font-family: $fontMont;
+                    }
+                }
+            }
+        }
+
+        .main__button {
+            margin-top: 21px;
+            width: fit-content;
+            font-weight: 500;
+            padding: 21px 35px;
+            background-color: hsl(222, 88%, 60%);
+            color: inherit;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: $transitionTime;
+
+            &:hover {
+                background-color: hsl(222, 88%, 50%);
+            }
+        }
+
+        .gradient {
+            @include textGradient($gradient-red);
+        }
+
+        .gradient2 {
+            @include textGradient($gradient-red2);
+        }
+    }
+}
+
+.circle {
+    position: fixed;
+    will-change: transform;
+    animation-duration: 20s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+    &--red {
+        @include ball(rgba(255, 208, 208, 0.536),
+            rgba(212, 93, 93, 0.264),
+            rgba(167, 49, 49, 0.248),
+            rgba(130, 25, 25, 0.248),
+            rgba(223, 125, 125, 0.25))
+    }
+
+    &--purple {
+        @include ball(rgba(236, 208, 255, 0.64),
+            rgba(161, 93, 207, 0.24),
+            rgba(118, 49, 164, 0.208),
+            rgba(86, 24, 128, 0.232),
+            rgba(177, 118, 217, 0.25))
+    }
+
+    &-big {
+        width: 83px;
+
+        @include setMobileStyles {
+            width: 43px;
+        }
+    }
+
+    &-medium {
+        width: 60px;
+
+        @include setMobileStyles {
+            width: 40px;
+        }
+    }
+
+    &-small {
+        width: 28px;
+    }
+
+    &1 {
+        top: 83px;
+        left: 519px;
+        animation-name: #{fly}+ math.random(3);
+
+        @include setMobileStyles {
+            left: 29px;
+            top: 422px;
+        }
+    }
+
+    &2 {
+        top: 547px;
+        left: 851px;
+        animation-name: #{fly} + math.random(3);
+    }
+
+    &3 {
+        top: -2px;
+        left: 868px;
+        filter: blur(5px);
+        animation-name: #{fly} + math.random(3);
+
+        @include setMobileStyles {
+            left: 296px;
+            top: 256px;
+        }
+    }
+
+}
+
+.light {
+    position: fixed;
+    aspect-ratio: 1;
+    opacity: 0.5;
+    filter: blur(196px);
+
+    &--red {
+        width: 311px;
+        top: 251px;
+        left: -102px;
+        background: #961A1A;
+
+        @include setTabletStyles {
+            width: 211px;
+            top: 241px;
+            left: -55px;
+        }
+    }
+
+    &--purple {
+        width: 259px;
+        top: -154px;
+        left: 602px;
+        background: #833AB4;
+
+        @include setTabletStyles {
+            top: 107px;
+            left: 258px;
+        }
+    }
+
+    &--yellow {
+        width: 200px;
+        left: -66px;
+        top: 519px;
+        background: #FCB045;
+        opacity: 0.4;
+    }
+}
+
+.glass {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    @include setMobileStyles {
+        background: radial-gradient(238.53% 189.02% at 3.2% 3.49%,
+                rgba(255, 246, 233, 0.1) 0%,
+                rgba(26, 29, 35, 0.1) 26.62%,
+                rgba(26, 29, 35, 0.1) 52.1%,
+                rgba(26, 29, 35, 0.01) 70.17%,
+                rgba(26, 29, 35, 0) 100%);
+        filter: blur(7.5px);
+    }
+
+}
+
+.noise {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: url('/noise.png');
+    mix-blend-mode: overlay;
+    z-index: 1;
+}
+
+@keyframes fly1 {
+    0% {
+        transform: translate(-10px, 20px) scale(0.9);
+    }
+
+    50% {
+        transform: translate(50px, -50px) scale(1.1);
+    }
+
+    100% {
+        transform: translate(-70px, 100px) scale(1);
+    }
+}
+
+@keyframes fly2 {
+    0% {
+        transform: translate(-50px, -20px) scale(0.8);
+    }
+
+    50% {
+        transform: translate(50px, 70px) scale(1);
+    }
+
+    100% {
+        transform: translate(70px, -50px) scale(1.1);
+    }
+}
+
+@keyframes fly3 {
+    0% {
+        transform: translate(-20px, -50px) scale(1.1);
+    }
+
+    50% {
+        transform: translate(30px, 20px) scale(0.9);
+    }
+
+    100% {
+        transform: translate(50px, -50px) scale(1);
+    }
+}

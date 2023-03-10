@@ -4,9 +4,10 @@
     padding-top: 55px;
     padding-bottom: 20px;
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 98px;
+    z-index: 1;
 
     @include setTabletStyles {
         flex-wrap: wrap;
