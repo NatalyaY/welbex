@@ -1,0 +1,10 @@
+@use '../shared';
+
+.social {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    fill: shared.$color;
+    @include shared.hoverable;
+    @include shared.fillOnHover;
+}

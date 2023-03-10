@@ -1,0 +1,142 @@
+//font
+$fontInter: 'Inter', sans-serif;
+$fontMont: 'Montserrat', sans-serif;
+$fz-h1: 48px;
+$fz-h1-mobile: 36px;
+$fz-h2: 18px;
+$fz-text: 16px;
+$fz-text-mobile: 14px;
+
+// colors
+$color: #E4E5EA;
+$color-secondary: #656566;
+$bcg: #0E1014;
+
+$transitionTime: .2s;
+
+// breakpoints
+$mobile: 600px;
+$tablet: 768px;
+$desk-small: 1200px;
+
+
+@mixin textGradient ($gradient) {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background: $gradient;
+    background-position: 200% 200%;
+    animation: shine 1s linear infinite;
+}
+
+@mixin backdropFilter ($radix) {
+    overflow: hidden;
+
+    &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        filter: blur($radix);
+    }
+}
+
+@mixin ball ($grad1, $grad2, $grad3, $grad4, $shadow) {
+    background: radial-gradient(64% 64% at 27.25% 26.5%,
+            $grad1 0%,
+            $grad2 59.67%,
+            $grad3 78.59%,
+            $grad4 100%);
+    box-shadow: 3px 6px 27px -10px $shadow;
+    border-radius: 50%;
+    @include backdropFilter(2px);
+}
+
+@mixin hoverable () {
+    transition: opacity $transitionTime;
+
+    &:hover {
+        opacity: .7;
+    }
+}
+
+@mixin underlineOnHover() {
+    text-decoration: none;
+
+    &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: $color;
+        left: 50%;
+        bottom: 1px;
+        transform: translateX(-50%) scaleX(0);
+        will-change: transform;
+        transition: transform $transitionTime;
+    }
+
+    &:hover:after {
+        transform: translateX(-50%) scaleX(1);
+    }
+}
+
+@mixin fillOnHover() {
+    &:hover {
+        fill: url(#socialsGradient);
+    }
+}
+
+@mixin setMobileStyles {
+    @media (max-width: $mobile) {
+        @content;
+    }
+}
+
+@mixin setTabletStyles {
+    @media (max-width: $tablet) {
+        @content;
+    }
+}
+
+@mixin setSmallDeskStyles {
+    @media (max-width: $desk-small) {
+        @content;
+    }
+}
+
+.container {
+    --horizontalPadding: 150px;
+
+    width: 100vw;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 var(--horizontalPadding);
+
+    @include setSmallDeskStyles {
+        --horizontalPadding: 80px;
+    }
+
+    @include setTabletStyles {
+        --horizontalPadding: 40px;
+    }
+
+    @include setMobileStyles {
+        --horizontalPadding: 15px;
+    }
+}
+
+@keyframes shine {
+    0% {
+        background-size: 100% auto;
+    }
+
+    50% {
+        background-size: 200% auto;
+    }
+
+    100% {
+        background-size: 900% auto;
+    }
+}
