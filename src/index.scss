@@ -25,6 +25,10 @@ a {
   @extend %link;
 }
 
+main {
+  flex: 1;
+}
+
 
 body {
   font: $fz-text $fontInter;
@@ -32,4 +36,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: $color;
   background-color: $bcg;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
