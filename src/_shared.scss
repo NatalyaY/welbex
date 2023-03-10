@@ -17,7 +17,13 @@ $transitionTime: .2s;
 // breakpoints
 $mobile: 600px;
 $tablet: 768px;
+$tablet-big: 900px;
 $desk-small: 1200px;
+
+//gradients
+$gradient-pink: linear-gradient(92deg, #FCB045 27.14%, #FF3F78 121.36%), #E4E5EA;
+$gradient-red: linear-gradient(90deg, #FCB045 36.99%, #FD1D1D 100%);
+$gradient-red2: linear-gradient(90deg, #FCB045 65.99%, #FD1D1D 130%);
 
 %link {
     text-decoration: none;
@@ -31,11 +37,12 @@ $desk-small: 1200px;
 
 
 @mixin textGradient ($gradient) {
+    background: $gradient;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background: $gradient;
     background-position: 200% 200%;
-    animation: shine 1s linear infinite;
+    background-size: 100% auto;
+    animation: shine 3s ease-out infinite;
 }
 
 @mixin backdropFilter ($radix) {
@@ -59,6 +66,7 @@ $desk-small: 1200px;
             $grad3 78.59%,
             $grad4 100%);
     box-shadow: 3px 6px 27px -10px $shadow;
+    aspect-ratio: 1;
     border-radius: 50%;
     @include backdropFilter(2px);
 }
@@ -116,12 +124,19 @@ $desk-small: 1200px;
     }
 }
 
+@mixin setBigTabletStyles {
+    @media (max-width: $tablet-big) {
+        @content;
+    }
+}
+
 .container {
     --horizontalPadding: 150px;
 
     width: 100vw;
     max-width: 1440px;
     margin-left: auto;
+    margin-right: auto;
     padding-left: var(--horizontalPadding);
     padding-right: var(--horizontalPadding);
 
@@ -143,12 +158,12 @@ $desk-small: 1200px;
         background-size: 100% auto;
     }
 
-    50% {
-        background-size: 200% auto;
+    70% {
+        background-size: 100% auto;
     }
 
-    100% {
-        background-size: 900% auto;
+    75% {
+        background-size: 400% 200%;
     }
 }
 

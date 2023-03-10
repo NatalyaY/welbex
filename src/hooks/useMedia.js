@@ -16,7 +16,7 @@ const useMedia = (rule = `(max-width: ${sizes.mobile})`) => {
         return () => {
             result.removeEventListener('change', handleChange);
         };
-    }, [rule]);
+    }, [result, rule]);
 
     return matches;
 

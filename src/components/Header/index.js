@@ -13,19 +13,18 @@ const Header = () => {
 
     const handleScroll = () => {
         let isScrolled = false;
-        if (window.scrollY > 0) {
+        if (window.document.body.scrollTop > 50) {
             isScrolled = true;
         }
-        if (sticky !== isScrolled) {
-            setSticky(isScrolled);
-        }
+        setSticky(isScrolled);
+
     };
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
+        window.document.body.addEventListener('scroll', handleScroll);
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+            window.document.body.removeEventListener('scroll', handleScroll);
         };
     }, []);
 
@@ -75,7 +74,7 @@ const Header = () => {
                                     <use xlinkHref={`${socials}#telegram`} />
                                 </svg>
                             </a>
-                            <a href="https://skobelkin.ru/viber/75555555555">
+                            <a href="https://skobelkin.ru/viber/75555555555" target='_blank' rel="noreferrer">
                                 <svg className='social'>
                                     <use xlinkHref={`${socials}#viber`} />
                                 </svg>

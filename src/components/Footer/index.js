@@ -76,7 +76,7 @@ const Footer = () => {
                                 <use xlinkHref={`${socials}#telegram`} />
                             </svg>
                         </a>
-                        <a href="https://skobelkin.ru/viber/75555555555">
+                        <a href="https://skobelkin.ru/viber/75555555555" target='_blank' rel="noreferrer">
                             <svg className='social'>
                                 <use xlinkHref={`${socials}#viber`} />
                             </svg>
@@ -92,7 +92,7 @@ const Footer = () => {
                     </address>
                     <div className="policy">
                         <span>
-                            ©WELBEX 2022.Все права защищены.
+                            ©WELBEX 2022. Все права защищены.
                         </span>
                         <a href="/" className='link'>
                             Политика конфиденциальности
