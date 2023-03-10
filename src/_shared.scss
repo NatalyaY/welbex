@@ -19,6 +19,16 @@ $mobile: 600px;
 $tablet: 768px;
 $desk-small: 1200px;
 
+%link {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+
+    &:active {
+        color: #FCB045;
+    }
+}
+
 
 @mixin textGradient ($gradient) {
     -webkit-background-clip: text;
@@ -71,7 +81,7 @@ $desk-small: 1200px;
         height: 1px;
         background-color: $color;
         left: 50%;
-        bottom: 1px;
+        bottom: -2px;
         transform: translateX(-50%) scaleX(0);
         will-change: transform;
         transition: transform $transitionTime;
@@ -111,8 +121,9 @@ $desk-small: 1200px;
 
     width: 100vw;
     max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 var(--horizontalPadding);
+    margin-left: auto;
+    padding-left: var(--horizontalPadding);
+    padding-right: var(--horizontalPadding);
 
     @include setSmallDeskStyles {
         --horizontalPadding: 80px;
@@ -139,4 +150,10 @@ $desk-small: 1200px;
     100% {
         background-size: 900% auto;
     }
+}
+
+:export {
+    mobile: $mobile;
+    tablet: $tablet;
+    desk-small: $desk-small;
 }

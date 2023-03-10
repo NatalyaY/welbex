@@ -1,0 +1,95 @@
+@use '../../shared' as *;
+
+.header {
+    margin-top: 47px;
+    position: sticky;
+    top: 0;
+
+    &--dark {
+        background-color: #0E1014;
+    }
+
+    @include setTabletStyles {
+        margin-top: 0;
+    }
+
+    &__container {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 30px;
+
+        @include setSmallDeskStyles {
+            gap: 20px;
+        }
+
+        @include setTabletStyles {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    }
+
+    &__nav {
+        flex: 1 1 auto;
+        flex-wrap: wrap;
+        display: flex;
+        align-items: flex-start;
+        gap: 5px 30px;
+        font-weight: 500;
+
+        @include setTabletStyles {
+            gap: 16px;
+            font-size: 12px;
+
+            & * {
+                text-transform: uppercase;
+            }
+        }
+
+        &__link {
+            position: relative;
+            @include hoverable;
+            @include underlineOnHover;
+        }
+    }
+
+}
+
+.logoLink {
+    font: 10px $fontMont;
+    flex: 0 0 auto;
+    margin-right: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    white-space: pre-line;
+    @include hoverable;
+}
+
+.contacts {
+    flex: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px 47px;
+
+    @include setSmallDeskStyles {
+        flex-wrap: wrap;
+    }
+
+    &__tel {
+        white-space: nowrap;
+        @include hoverable;
+    }
+
+    .socials {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+
+        @include setSmallDeskStyles {
+            flex-basis: 100%;
+        }
+    }
+}

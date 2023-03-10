@@ -1,4 +1,4 @@
-@use './shared';
+@use './shared' as *;
 @import-normalize;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Montserrat:wght@300;400&display=swap');
 
@@ -16,11 +16,20 @@ body {
   padding: 0;
 }
 
+img {
+  width: auto;
+  height: auto;
+}
+
+a {
+  @extend %link;
+}
+
 
 body {
-  font: shared.$fz-text shared.$fontInter;
+  font: $fz-text $fontInter;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: shared.$color;
-  background-color: shared.$bcg;
+  color: $color;
+  background-color: $bcg;
 }
