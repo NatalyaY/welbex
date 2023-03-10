@@ -1,0 +1,137 @@
+@use '../../shared' as *;
+
+.footer {
+    padding-top: 55px;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 98px;
+
+    @include setTabletStyles {
+        flex-wrap: wrap;
+        padding-top: 45px;
+        padding-bottom: 60px;
+        background-color: $bcg;
+    }
+
+    @include setMobileStyles {
+        flex-direction: column;
+    }
+
+    @include setSmallDeskStyles {
+        gap: 30px;
+    }
+
+    a:not(.socials a) {
+        @include hoverable;
+
+        &:not(.tel):not(.policy .link) {
+            position: relative;
+            width: fit-content;
+            @include underlineOnHover;
+        }
+    }
+
+    &__section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        &--contacts {
+            align-items: flex-end;
+
+            @include setTabletStyles {
+                margin-top: 20px;
+                flex: 1 1 100%;
+            }
+
+            @include setMobileStyles {
+                margin-top: 0;
+                flex: 0 0 auto;
+                align-items: flex-start;
+            }
+        }
+
+        &--grow {
+            flex: 1;
+        }
+
+        &__heading {
+            text-transform: uppercase;
+            color: $color-secondary;
+            font-size: 14px;
+            font-weight: 700;
+
+            @include setMobileStyles {
+                font-size: 12px;
+            }
+        }
+
+        &__group {
+            display: flex;
+            gap: 52px;
+        }
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            @include setMobileStyles {
+                font-size: 14px;
+            }
+        }
+
+        &__contacts {
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+            align-items: flex-end;
+            gap: 20px;
+
+            @include setMobileStyles {
+                gap: 10px;
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .tel {
+                white-space: nowrap;
+                font-weight: 500;
+            }
+
+            .socials {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .address {
+                font-style: normal;
+
+                @include setMobileStyles {
+                    font-size: 14px;
+                }
+            }
+
+            .policy {
+                margin-top: 70px;
+                font: 12px $fontMont;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+
+                @include setMobileStyles {
+                    margin-top: 50px;
+                }
+
+                .link {
+                    text-decoration: underline;
+                    white-space: nowrap;
+                    @include hoverable;
+                }
+            }
+        }
+    }
+}
